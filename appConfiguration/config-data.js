@@ -1,0 +1,3 @@
+{
+    "houseStatus": "presence"
+}

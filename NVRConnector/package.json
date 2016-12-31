@@ -1,0 +1,9 @@
+{
+	"name": "NVR-connector",
+	"version": "1.0.0",
+	"description": "Connector module for Network Video Recorder.",
+	"author": "shden",
+	"license": "ISC",
+	"dependencies" : {
+	}
+}
