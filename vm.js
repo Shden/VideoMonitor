@@ -36,6 +36,11 @@ app.get('*', (request, responce) => {
 
 startNVRConnector();
 
-app.listen(package_configuration.config.port, function () {
-	console.log('Video Monitoring App is on port ' + package_configuration.config.port);
+var server_port = process.env.OPENSHIFT_NODEJS_PORT ||
+	package_configuration.config.port;
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP ||
+	package_configuration.config.host;
+
+app.listen(server_port, server_ip_address, function () {
+	console.log(`Video Monitoring App is on ${server_ip_address}, port ${server_port}.`);
 });

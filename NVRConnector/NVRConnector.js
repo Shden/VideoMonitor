@@ -9,7 +9,7 @@ var 	ftpd = require('./nodeftpd/ftpd'),
 	certFile,
 	server,
 	options = {
-		host : process.env.IP || '127.0.0.1',
+		host : process.env.OPENSHIFT_NODEJS_IP || package_configuration.config.host,
 		port : process.env.PORT || package_configuration.config.ftp.port,
 		tls  : null
 	};

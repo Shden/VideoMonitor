@@ -10,10 +10,11 @@
   "scripts": {
     "test": "mocha lib/test",
     "start": "npm run production",
-    "production": "npm run lint && npm test && npm run build && node vm.js",
+    "production": "npm run build && node vm.js",
     "lint": "eslint lib webConsole vm.js NVRConnector/NVRConnector.js routers",
-    "build": "webpack -d"
+    "build": "npm run lint && npm test && webpack -d"
   },
+  "main": "vm.js",
   "author": "den@dataart.com",
   "license": "ISC",
   "dependencies": {
