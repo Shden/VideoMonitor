@@ -1,3 +1,5 @@
+'use strict';
+
 var 	ftpd = require('./nodeftpd/ftpd'),
 	http = require('http'),
 	fs = require('fs'),

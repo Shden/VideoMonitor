@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express');
 const alertsRouter = express.Router();
 const path = require('path');
