@@ -87,6 +87,7 @@ function startNVRConnector() {
 			if (action == 'open') {
 				if (configuration.getHouseStatus() != 'standby') {
 					console.log('Alarms are skipped when status is not standby.');
+					var self = this;
 					if (self.dataSocket) {
 						self._closeSocket(self.dataSocket, true);
 					}
