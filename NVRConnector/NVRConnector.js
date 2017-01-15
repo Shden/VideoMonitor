@@ -67,14 +67,8 @@ function startNVRConnector() {
 
 		connection.on('command:user', function(user, success, failure) {
 			if (user == 'nvr') {
-				if (configuration.getHouseStatus() == 'standby') {
-					username = user;
-					success();
-				}
-				else {
-					console.log('Alarms are skipped when status is not standby.');
-					failure();
-				}
+				username = user;
+				success();
 			} else {
 				failure();
 			}
@@ -90,7 +84,16 @@ function startNVRConnector() {
 
 		connection.on('file:stor', function(action, fileInfo) {
 
-			//debugger;
+			if (action == 'open') {
+				if (configuration.getHouseStatus() != 'standby') {
+					console.log('Alarms are skipped when status is not standby.');
+					if (self.dataSocket) {
+						self._closeSocket(self.dataSocket, true);
+					}
+					self.respond('426 Connection closed; transfer aborted');
+				}
+			}
+
 			if (action == 'close') {
 
 				var h264FileName = path.join(process.cwd(), fileInfo.file);
