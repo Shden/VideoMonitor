@@ -1304,13 +1304,26 @@ FtpConnection.prototype._STOR_usingWriteFile = function(filename, flag) {
 };
 
 FtpConnection.prototype._command_APPE = function(commandArg) {
-  var filename = withCwd(this.cwd, commandArg);
+	var filename = withCwd(this.cwd, commandArg);
 
-  if (this.server.options.useWriteFile) {
-    this._STOR_usingWriteFile(filename, 'a');
-  } else {
-    this._STOR_usingCreateWriteStream(filename, null, 'a');
-  }
+	self.emit('appe:start',
+		function success() {
+			self._logIf(LOG.INFO, 'Alarms will be recorded.');
+			if (this.server.options.useWriteFile) {
+				this._STOR_usingWriteFile(filename, 'a');
+			} else {
+				this._STOR_usingCreateWriteStream(filename, null, 'a');
+			}
+		},
+		function reject() {
+			self._logIf(LOG.INFO, 'Alarm is skipped as the status is not standby.');
+			var self = this;
+			if (self.dataSocket) {
+				self._closeSocket(self.dataSocket, true);
+			}
+			self.respond('426 Connection closed; transfer aborted');
+		}
+	);
 };
 
 // Specify a username for login

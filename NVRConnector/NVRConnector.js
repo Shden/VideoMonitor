@@ -82,18 +82,26 @@ function startNVRConnector() {
 			}
 		});
 
+		connection.on('appe:start', function(success, reject) {
+			if (configuration.getHouseStatus() === 'standby') {
+				success();
+			} else {
+				reject();
+			}
+		});
+
 		connection.on('file:stor', function(action, fileInfo) {
 
-			if (action == 'open') {
-				if (configuration.getHouseStatus() != 'standby') {
-					console.log('Alarms are skipped when status is not standby.');
-					var self = this;
-					if (self.dataSocket) {
-						self._closeSocket(self.dataSocket, true);
-					}
-					self.respond('426 Connection closed; transfer aborted');
-				}
-			}
+			// if (action == 'open') {
+			// 	if (configuration.getHouseStatus() != 'standby') {
+			// 		console.log('Alarms are skipped when status is not standby.');
+			// 		var self = this;
+			// 		if (self.dataSocket) {
+			// 			self._closeSocket(self.dataSocket, true);
+			// 		}
+			// 		self.respond('426 Connection closed; transfer aborted');
+			// 	}
+			// }
 
 			if (action == 'close') {
 
