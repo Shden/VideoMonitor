@@ -65,7 +65,7 @@ export default class HouseStatus extends Component {
 	}
 
 	loadData() {
-		fetch('/configuration/houseStatus')
+		fetch('/configuration/houseStatus', { credentials: 'same-origin' })
 			.then(responce => responce.json())
 			.then(json => { this.setState(json); })
 			.catch(err => alert(err));
