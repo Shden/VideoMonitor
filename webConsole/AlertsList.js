@@ -93,7 +93,7 @@ export default class AlertsList extends Component {
 	}
 
 	loadData() {
-		fetch('/alerts/getList')
+		fetch('/alerts/getList', { credentials: 'same-origin' })
 			.then(responce => responce.json())
 			.then(json => { this.setState({ alerts: json }); })
 			.catch(err => alert(err));
