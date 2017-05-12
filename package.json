@@ -10,7 +10,7 @@
   "scripts": {
     "test": "mocha lib/test",
     "start": "npm run production",
-    "production": "npm run build && node vm.js",
+    "production": "npm run build && forever stop vm.js && forever start vm.js",
     "lint": "eslint lib webConsole vm.js NVRConnector/NVRConnector.js routers",
     "build": "npm run lint && npm test && webpack -d"
   },
