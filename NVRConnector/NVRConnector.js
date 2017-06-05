@@ -88,6 +88,14 @@ function startNVRConnector() {
 			}
 		});
 
+		connection.on('appe:start', function(success, reject) {
+ 			if (configuration.getHouseStatus() === 'standby') {
+ 				success();
+ 			} else {
+ 				reject();
+ 			}
+ 		});
+
 		connection.on('file:stor', function(action, fileInfo) {
 
 			//debugger;
