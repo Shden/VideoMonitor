@@ -1304,8 +1304,10 @@ FtpConnection.prototype._STOR_usingWriteFile = function(filename, flag) {
 };
 
 FtpConnection.prototype._command_APPE = function(commandArg) {
-	var filename = withCwd(this.cwd, commandArg);
 
+	var filename = withCwd(this.cwd, commandArg);
+	var self = this;
+	
 	self.emit('appe:start',
 		function success() {
 			self._logIf(LOG.INFO, 'Alarms will be recorded.');
