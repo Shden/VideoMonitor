@@ -25,7 +25,7 @@ export default class AlertsList extends Component {
 		var alerts = this.state.alerts.map(alert => {
 			var startDate = new Date(alert.start);
 			return (
-				<div style={divStyle}>
+				<div style={divStyle} key={alert.fileURL}>
 					<a href={alert.fileURL + '.mp4'}>
 						<Image src={alert.fileURL + '.jpg'} thumbnail/>
 					</a>
