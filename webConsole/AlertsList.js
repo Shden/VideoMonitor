@@ -88,7 +88,7 @@ export default class AlertsList extends Component {
 				return alert.fileURL !== videoURL;
 			})});
 
-		fetch(videoURL, { method: 'DELETE' })
+		fetch(videoURL, { method: 'DELETE', credentials: 'same-origin' })
 			.catch(err => alert(err));
 	}
 
