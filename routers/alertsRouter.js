@@ -21,7 +21,7 @@ alertsRouter.get('/getList', (request, responce) => {
 // Get static media files.
 alertsRouter.use('/media', express.static(mediaDir));
 
-// Delete media files.
+// Delete specified media file
 alertsRouter.delete('/media/*', (request, responce) => {
 
 	var filePattern = path.resolve(mediaDir, request.params[0] + '.*');

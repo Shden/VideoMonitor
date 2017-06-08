@@ -18,18 +18,20 @@ export default class HouseStatus extends Component {
 			//width: 500
 		};
 		return (
-			<PageHeader>{this.getStatusAttr().title}
-				<ButtonToolbar style={spanStyle}>
-					<Button bsStyle={this.getStatusAttr().btnStyle}
-						onClick={() => this.toggleStatus()}
-						bsSize="large">
-						{this.getStatusAttr().action}
-					</Button>
-					<Button bsSize="large" href="/index">
-						<Glyphicon glyph="refresh"/> Обновить
-					</Button>
-				</ButtonToolbar>
-			</PageHeader>
+			<div>
+				<PageHeader>{this.getStatusAttr().title}
+					<ButtonToolbar style={spanStyle}>
+						<Button bsStyle={this.getStatusAttr().btnStyle}
+							onClick={() => this.toggleStatus()}
+							bsSize="large">
+							{this.getStatusAttr().action}
+						</Button>
+						<Button bsSize="large" href="/index">
+							<Glyphicon glyph="refresh"/> Обновить
+						</Button>
+					</ButtonToolbar>
+				</PageHeader>
+			</div>
 		);
 	}
 
@@ -38,7 +40,7 @@ export default class HouseStatus extends Component {
 		case 'standby':
 			return {
 				title: 'Наблюдение',
-				action: 'Закончить наблюдение',
+				action: 'Закончить',
 				btnStyle: 'warning',
 				changeTo: 'presence'
 			};
@@ -46,7 +48,7 @@ export default class HouseStatus extends Component {
 		case 'presence':
 			return {
 				title: 'Ожидание',
-				action: 'Начать наблюдение',
+				action: 'Наблюдать',
 				btnStyle: 'danger',
 				changeTo: 'standby'
 			};
