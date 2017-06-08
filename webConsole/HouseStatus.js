@@ -13,24 +13,23 @@ export default class HouseStatus extends Component {
 	}
 
 	render() {
-		var spanStyle = {
-			float: 'right'//,
-			//width: 500
-		};
+		// var spanStyle = {
+		// 	float: 'right'//,
+		// 	//width: 500
+		// };
 		return (
 			<div>
-				<PageHeader>{this.getStatusAttr().title}
-					<ButtonToolbar style={spanStyle}>
-						<Button bsStyle={this.getStatusAttr().btnStyle}
-							onClick={() => this.toggleStatus()}
-							bsSize="large">
-							{this.getStatusAttr().action}
-						</Button>
-						<Button bsSize="large" href="/index">
-							<Glyphicon glyph="refresh"/> Обновить
-						</Button>
-					</ButtonToolbar>
-				</PageHeader>
+				<ButtonToolbar style={spanStyle}>
+					<Button bsStyle={this.getStatusAttr().btnStyle}
+						onClick={() => this.toggleStatus()}
+						bsSize="large">
+						{this.getStatusAttr().action}
+					</Button>
+					<Button bsSize="large" href="/index">
+						<Glyphicon glyph="refresh"/> Обновить
+					</Button>
+				</ButtonToolbar>
+				<PageHeader>{this.getStatusAttr().title}</PageHeader>
 			</div>
 		);
 	}
