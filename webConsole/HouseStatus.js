@@ -13,13 +13,9 @@ export default class HouseStatus extends Component {
 	}
 
 	render() {
-		// var spanStyle = {
-		// 	float: 'right'//,
-		// 	//width: 500
-		// };
 		return (
 			<div>
-				<ButtonToolbar style={spanStyle}>
+				<ButtonToolbar>
 					<Button bsStyle={this.getStatusAttr().btnStyle}
 						onClick={() => this.toggleStatus()}
 						bsSize="large">
