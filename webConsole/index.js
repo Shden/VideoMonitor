@@ -45,8 +45,8 @@ const About = React.createClass({
 			<div>
 				<PageHeader>About</PageHeader>
 				<p>Home surveillance console for Harbor.</p>
-				<p>Build 0.2.</p>
-				<p>Date 30-12-2016.</p>
+				<p>Build 0.3.</p>
+				<p>Date 09-06-2017.</p>
 				<p>Contact <a href="mailto:denis.afanassiev@gmail.com">denis.afanassiev@gmail.com</a></p>
 			</div>
 		);

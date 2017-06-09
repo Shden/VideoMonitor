@@ -45,8 +45,15 @@ alertsRouter.delete('/media/*', (request, responce) => {
 
 // Raise alarm on identified event.
 alertsRouter.post('/raise', (request, responce) => {
-	sendSNS.sendMessage(request.body);
-	responce.end();
+	sendSNS.sendMessage(request.body)
+		.then(() => {
+			responce.end();
+		})
+		.catch(err => {
+			console.log(err);
+			responce.status(400);
+			responce.send(err);
+		});
 });
 
 module.exports = alertsRouter;
