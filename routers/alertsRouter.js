@@ -7,6 +7,7 @@ const path = require('path');
 const directoryWalker = require('../lib/walk');
 const fileNameDecoder = require('../lib/parsefiles');
 const execp = require('../lib/execp');
+const sendSNS = require('../lib/sendSNS');
 
 const mediaDir = './NVRConnector/alerts/192.168.1.9_00121274a512';
 
@@ -45,7 +46,7 @@ alertsRouter.delete('/media/*', (request, responce) => {
 // Raise alarm on identified event.
 alertsRouter.post('/raise', (request, responce) => {
 	console.log(request.body);
-	responce.send(request.body);
+	sendSNS.sendMessage(request.body);
 });
 
 module.exports = alertsRouter;

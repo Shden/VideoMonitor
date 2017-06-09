@@ -118,7 +118,7 @@ function startNVRConnector() {
 				execp(h264toMp4Cmd)
 					.then(() => { execp(mp4toJpgCmd); })
 					.then(() => { execp('rm ' + h264FileName); })
-					.then(() => { raiseAlarm({ data: 'test data for now'}); })
+					.then(() => { raiseAlarm({ data: 'ShHarbor Alarm: Motion detected.'}); })
 					.catch(err => { console.error(err); });
 			}
 		});
@@ -158,9 +158,7 @@ function raiseAlarm(alarm)
 				rejected(err);
 			});
 		});
-		request.write(
-			JSON.stringify(alarm, null, 4),
-			'utf8');
+		request.write(JSON.stringify(alarm, null, 4), 'utf8');
 		request.end();
 	});
 }
